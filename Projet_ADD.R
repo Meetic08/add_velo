@@ -22,11 +22,36 @@ library(Factoshiny)
 
 ############# On importe les données par un document xlsx avec comme séparateur les colones #################
 
-don <- read_csv("C:/Users/33662/desktop/add_velo/data/accidentsVelo.csv")
+don <- read_delim("C:/Users/33662/desktop/add_velo/data/accidentsVelo.csv", delim=";")
 # On visualise nos données : 
 View(don)
 
 summary(don)
+
+genre = don$sexe
+table(genre)
+
+# Fonction pour changer les valeurs quanti en quali sur le genre 
+genre_V2 <- function(valeur) {
+  if (valeur == 1) {
+    return("Homme")
+  } else if (valeur == 2) {
+    return("Femme")
+  } else {
+    return("Valeur inconnue")
+  }
+}
+
+# Appliquer la fonction à la colonne
+genre_quanti <- sapply(genre, genre_V2)
+table (genre_quanti)
+don$sexe = genre_quanti
+
+
+
+
+
+
 
 
 
