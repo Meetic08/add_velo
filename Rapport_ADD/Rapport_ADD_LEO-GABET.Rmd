@@ -1,0 +1,412 @@
+---
+documentclass: "compterendu"
+lang: true
+babel-lang: "french"
+geometry:
+  - left=2cm
+  - right=2cm
+  - top=2cm
+  - bottom=2.5cm
+title: "Projet Analyse de données"
+author: 
+  Léo GABET
+email:
+  - leo.gabet@etudiant.univ-reims.fr
+date: "`r format(Sys.time(), '%d %B %Y')`"
+abstract: "BLABLA"
+keywords:
+  - Langage python maos zencore
+anac: "2023-2024"
+diplome: "M2 SEP"
+module: "SEP0931"
+enseig: "Emmanuelle Gauthérat"
+evaluation: "PROJET ADD"
+coefficient: "50 \\%"
+output: 
+  bookdown::pdf_book:
+    template: template.tex
+    fig_caption: yes
+    keep_tex: yes
+    toc: yes
+bibliography: biblio_cr-urca.bib
+biblio-style: plain
+link-citations: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(fig.pos = "H", out.width = "100%", fig.align = "center")
+
+###### Charger les différentes librairies 
+
+library(installr)
+library(lmtest)
+library(tidyverse)
+library(data.table)
+library(magrittr)
+library(DAAG)
+library(plotly)
+library(tseries)
+library(olsrr) 
+library(car)
+library(readr)
+library(readxl)
+library(dplyr)
+library(FactoMineR)
+library(factoextra)
+library(openxlsx)
+library(Factoshiny)
+library(gridExtra)
+library(cowplot)
+library(stringr)
+```
+
+# Introduction
+
+## Contexte de l'étude
+
+Le vélo est devenu un mode de transport de plus en plus populaire à travers le monde, offrant une alternative écologique et saine aux moyens de déplacement traditionnels. En France, l'a promotion de 'intérêt de l'utilisation du vélo est devenue une priorité, avec des efforts déployés pour créer des infrastructures adaptées, telles que des pistes cyclables, afin de favoriser la sécurité des cyclistes et encourager la pratique du vélo.
+
+Cependant, malgré ces initiatives, la sécurité des cyclistes sur les routes reste une préoccupation majeure. Les accidents de vélos peuvent avoir des conséquences graves, mettant en lumière la nécessité d'une compréhension approfondie des facteurs contribuant à ces incidents. Dans ce contexte, l'analyse de données offre une approche précieuse pour examiner les tendances, les corrélations et les déterminants des accidents de vélos en France.
+
+Cette analyse s'appuiera sur deux jeux de données différents. D'une part, une base de données détaillant les accidents de vélos survenus à travers le pays fournira des informations précieuses sur les circonstances, la gravité et les lieux des incidents. D'autre part, une base de données spécifique à Paris, décrivant la création et l'emplacement des pistes cyclables, permettra d'explorer la corrélation entre l'infrastructure dédiée aux cyclistes et la fréquence des accidents.
+
+L'objectif de cette analyse est de dégager des tendances significatives, de mettre en évidence les zones à risque élevé, et d'évaluer l'impact des pistes cyclables sur la sécurité des cyclistes. En comprenant les facteurs sous-jacents aux accidents de vélos, il devient possible d'orienter les politiques publiques, d'améliorer les infrastructures et de promouvoir des mesures préventives pour garantir une cohabitation sûre et efficace entre les cyclistes et les autres usagers de la route.
+
+Cette étude contribuera ainsi à la promotion d'une mobilité durable, en mettant en lumière les défis actuels et en proposant des solutions basées sur des données probantes pour renforcer la sécurité des cyclistes en France.
+
+## Plan de l'étude
+
+En exploitant les données nationales disponibles sur le site **data gouv**, notre première étape consistera à dégager les tendances des accidents de vélos et à localiser les zones à risques élevés à l'échelle nationale. Cette analyse globale sera ensuite approfondie par un zoom sur Paris, permettant ainsi de cerner les défis spécifiques rencontrés dans la capitale.
+
+La deuxième phase de notre étude se concentrera sur l'analyse de la base de données détaillant les pistes cyclables à Paris ici du site **data Paris**. Cette démarche vise à cartographier ces infrastructures et à examiner leur évolution au fil du temps. Comprendre ces dynamiques est essentiel pour évaluer l'influence de l'infrastructure sur la sécurité des cyclistes.
+
+Enfin, nous croiserons les données d'accidents par arrondissement avec la présence de pistes cyclables. Cette approche nous permettra de déterminer les liens entre les accidents de vélos et l'existence de pistes cyclables. L'objectif ultime est d'identifier des zones spécifiques nécessitant des améliorations ciblées afin de renforcer la sécurité des cyclistes dans la ville de Paris.
+
+# Données
+
+Les jeux de données comprennent une couverture complète des accidents de vélo à l'échelle nationale en France, offrant une vue d'ensemble des incidents survenus dans tout le pays. Un second jeu de données se concentre spécifiquement sur les pistes cyclables, cartographiant l'infrastructure dédiée dans diverses localités. Enfin, un troisième jeu de données se focalise sur les accidents de vélo à Paris, avec des informations détaillées sur les arrondissements. Ces ensembles de données permettent d'analyser les tendances, de localiser les zones à risques et d'évaluer l'impact des pistes cyclables sur la sécurité, offrant ainsi une compréhension approfondie de la situation des cyclistes en France.
+
+# Analyse des Accidents de Vélos en France
+
+## Exploration des bases de données sur les accidents de vélos à l'échelle nationale
+
+```{r accfrancedetail, fig.cap="Représentation des accidents de vélo en France par année, mois, jour et horaire", echo=FALSE, warning=FALSE}
+################## Analyses univariées #################################
+
+data <- read.csv("C:/Users/33662/Desktop/add_velo/data/data_clean.csv", sep=",", header = TRUE)
+
+data <- data %>%
+  mutate(dep = as.numeric(dep))
+data <- data %>%
+  mutate(long = as.numeric(long))
+
+plot1 <- ggplot(data, aes(x = an, fill = Consequence)) +
+  geom_histogram(breaks = seq(min(data$an), max(data$an)), 
+                 width = 2, color = "black", alpha = 0.7) +
+  geom_density(alpha = 0.2) +
+  labs(title = "Accidents par an") +
+  ylab("Nb accidents") +
+  theme_minimal() +
+  scale_fill_manual(values = c("orange", "skyblue", "green", "red")) + 
+  theme(legend.position = "none") 
+
+
+# Créer un facteur ordonné avec les niveaux des mois
+data$mois <- factor(data$mois, levels = c("janvier", "fevrier", "mars", "avril", "mai", "juin", "juillet", "aout", "septembre", "octobre", "novembre", "decembre"))
+plot2 <- ggplot(data, aes(x = mois, fill = Consequence)) +
+  geom_bar(color = "black") +
+  labs(title = "Accidents par mois") +
+  ylab("Nb accidents") +
+  theme_minimal() +
+  scale_x_discrete(breaks = c("janvier", "avril", "aout", "decembre")) +
+  scale_fill_manual(values = c("orange", "skyblue", "green", "red")) +
+  theme(legend.position = "none")
+
+
+# Créer un facteur ordonné avec les niveaux des jours
+data$jour <- factor(data$jour, levels = c("lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"))
+plot3 <- ggplot(data, aes(x = jour, fill = Consequence)) +
+  geom_bar(color = "black") +
+  labs(title = "Accidents par jour") +
+  ylab("Nb accidents") +
+  theme_minimal() +
+  scale_x_discrete(breaks = c("lundi", "mercredi", "vendredi", "dimanche")) +
+  scale_fill_manual(values = c("orange", "skyblue", "green", "red")) + 
+  theme(legend.position = "none")  
+
+
+# Créer un facteur ordonné avec les niveaux les heures
+data$Tranche_horaire <- factor(data$Tranche_horaire, levels = c("Matin", "Apres-midi", "Soir", "Nuit", "NA"))
+filtered_data <- data[!is.na(data$Tranche_horaire), ]
+# Créer le graphique avec les données filtrées
+plot4 <- ggplot(filtered_data, aes(x = Tranche_horaire, fill = Consequence)) +
+  geom_bar(color = "black") +
+  ylab("Nb accidents") +
+  labs(title = "Accidents par tranche horaire") +
+  theme_minimal() +
+  scale_fill_manual(values = c("orange", "skyblue", "green", "red")) + 
+  theme(legend.position = "bottom") +
+  guides(fill = guide_legend(title = "Conséquence"))
+
+arranged_plots <- arrangeGrob(plot1 + theme(legend.position = "none"),
+                              plot2 + theme(legend.position = "none"),
+                              plot3 + theme(legend.position = "none"),
+                              plot4 + theme(legend.position = "none"),
+                              ncol = 2)
+
+# Ajouter une légende en bas
+legend <- cowplot::get_legend(plot4)
+
+# Afficher le graphique final avec la légende en bas
+gridExtra::grid.arrange(arranged_plots, legend, ncol = 1,
+                        heights = c(15, 1))
+```
+
+Les accidents de vélos se déroulent principalement durant les mois à température douce voir chaude, tel que le mois de juin qui représente un pic des accidents de vélos sur 13 ans. 
+On contaste bien que le type de jour lié aux accidents correspond aux jours de la semaine, avec une très grande part d'accident lors des après-midi. 
+
+## Identification des zones à risques élevés à l'échelle du pays
+
+```{r accfranceregion, fig.cap="Accidents en France en fonction des régions", echo=FALSE, warning=FALSE}
+ggplot(data, aes(x = Region, fill = Consequence)) +
+  geom_bar(stat = "count", color = "black") +
+  coord_flip() +  # Cela inverse les axes, rendant le graphique horizontal
+  xlab("Régions") + 
+  ylab("Nb accidents") +
+  theme_minimal() +
+  scale_fill_manual(values = c("orange", "skyblue", "green", "red")) + 
+  theme(legend.position = "bottom") +
+  guides(fill = guide_legend(title = "Conséquence"))
+```
+
+
+Une grande partie des accidents de vélo en France se déroule principalement en île de France, avec une très faible présence d'accidence en Provence-Alpes-Cote d'Azur (et Corse).
+
+## Facteurs et contextes 
+
+```{r accCONTEXTE, fig.cap="Représentation des accidents de vélo en France par les contextes des collisions et choc subi avec les équipements de sécurités", echo=FALSE, warning=FALSE}
+################## Analyses univariées #################################
+
+data <- read.csv("C:/Users/33662/Desktop/add_velo/data/data_clean.csv", sep=",", header = TRUE)
+
+plot1 <- ggplot(data, aes(x = str_wrap(Contexte, width = 10), fill = Consequence)) +
+  geom_bar(color = "black") +
+  labs(title = "Accidents par contexte") +
+  ylab("Nb accidents") +
+  xlab("Contexte") +
+  theme_minimal() +
+  scale_fill_manual(values = c("orange", "skyblue", "green", "red")) +
+  theme(legend.position = "none", axis.text.x = element_text(angle = 45, hjust = 1))
+
+data_filtered <- data %>%
+  group_by(Collision) %>%
+  filter(n() >= 500)
+plot2 <- ggplot(data_filtered, aes(x = str_wrap(Collision, width = 10), fill = Consequence)) +
+  geom_bar(color = "black") +
+  labs(title = "Accidents par type de collision") +
+  ylab("Nb accidents") +
+  xlab("Collision") +
+  theme_minimal() +
+  scale_fill_manual(values = c("orange", "skyblue", "green", "red")) +
+  theme(legend.position = "none", axis.text.x = element_text(angle = 45, hjust = 1))
+
+# Filtrer les données pour exclure les catégories vides
+data_filtered <- data %>%
+  filter(Equipement.secu != "")
+plot3 <- ggplot(data_filtered, aes(x = str_wrap(Equipement.secu, width=10), fill = Consequence)) +
+  geom_bar(color = "black") +
+  labs(title = "Accidents avec équipement de sécurité") +
+  ylab("Nb accidents") +
+  xlab("Equipement de sécurité") +
+  theme_minimal() +
+  scale_fill_manual(values = c("orange", "skyblue", "green", "red")) +
+  theme(legend.position = "none", axis.text.x = element_text(angle = 45, hjust = 1))  
+
+data_filtered <- data %>%
+  group_by(Choc.subi) %>%
+  filter(n() >= 500)
+plot4 <- ggplot(data_filtered, aes(x = str_wrap(Choc.subi, width=10), fill = Consequence)) +
+  geom_bar(color = "black") +
+  ylab("Nb accidents") +
+  xlab("Choc subi") +
+  labs(title = "Accidents par choc subi") +
+  theme_minimal() +
+  scale_fill_manual(values = c("orange", "skyblue", "green", "red")) + 
+  theme(legend.position = "bottom", axis.text.x = element_text(angle = 45, hjust = 1)) +
+  guides(fill = guide_legend(title = "Conséquence"))
+
+arranged_plots <- arrangeGrob(plot1 + theme(legend.position = "none"),
+                              plot2 + theme(legend.position = "none"),
+                              plot3 + theme(legend.position = "none"),
+                              plot4 + theme(legend.position = "none"),
+                              ncol = 2)
+
+# Ajouter une légende en bas
+legend <- cowplot::get_legend(plot4)
+
+# Afficher le graphique final avec la légende en bas
+gridExtra::grid.arrange(arranged_plots, legend, ncol = 1,
+                        heights = c(15, 1))
+```
+C'est lors de promenade et loisirs que les accidents de vélos se produisent le plus souvent, notamment par les voitures sur les cotés provoquant pour la plus part des chocs avant. On relève néanmoins que la plus part des accidentés possèdent au minima un casque pour leur équipement de sécurité, ce qui pourrait expliqué la forte présence de la conséquence "blessé léger". 
+
+## Zoom sur Paris : Analyse détaillée des accidents dans la capitale
+
+```{r accParisdetail, fig.cap="Représentation des accidents de vélo à Paris par année, mois, jour et horaire", echo=FALSE, warning=FALSE}
+################## Analyses univariées #################################
+
+data <- read.csv("C:/Users/33662/Desktop/add_velo/data/data_paris.csv", sep=",", header = TRUE)
+
+plot1 <- ggplot(data, aes(x = an, fill = Consequence.x)) +
+  geom_histogram(breaks = seq(min(data$an), max(data$an)), 
+                 width = 2, color = "black", alpha = 0.7) +
+  geom_density(alpha = 0.2) +
+  labs(title = "Accidents par an") +
+  ylab("Nb accidents") +
+  theme_minimal() +
+  scale_fill_manual(values = c("orange", "skyblue", "green", "red")) + 
+  theme(legend.position = "none") 
+
+
+# Créer un facteur ordonné avec les niveaux des mois
+data$mois <- factor(data$mois, levels = c("janvier", "fevrier", "mars", "avril", "mai", "juin", "juillet", "aout", "septembre", "octobre", "novembre", "decembre"))
+plot2 <- ggplot(data, aes(x = mois, fill = Consequence.x)) +
+  geom_bar(color = "black") +
+  labs(title = "Accidents par mois") +
+  ylab("Nb accidents") +
+  theme_minimal() +
+  scale_x_discrete(breaks = c("janvier", "avril", "aout", "decembre")) +
+  scale_fill_manual(values = c("orange", "skyblue", "green", "red")) +
+  theme(legend.position = "none")
+
+
+# Créer un facteur ordonné avec les niveaux des jours
+data$jour <- factor(data$jour, levels = c("lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"))
+plot3 <- ggplot(data, aes(x = jour, fill = Consequence.x)) +
+  geom_bar(color = "black") +
+  labs(title = "Accidents par jour") +
+  ylab("Nb accidents") +
+  theme_minimal() +
+  scale_x_discrete(breaks = c("lundi", "mercredi", "vendredi", "dimanche")) +
+  scale_fill_manual(values = c("orange", "skyblue", "green", "red")) + 
+  theme(legend.position = "none")  
+
+
+# Créer un facteur ordonné avec les niveaux les heures
+data$Tranche_horaire <- factor(data$Tranche_horaire, levels = c("Matin", "Apres-midi", "Soir", "Nuit", "NA"))
+filtered_data <- data[!is.na(data$Tranche_horaire), ]
+# Créer le graphique avec les données filtrées
+plot4 <- ggplot(filtered_data, aes(x = Tranche_horaire, fill = Consequence.x)) +
+  geom_bar(color = "black") +
+  ylab("Nb accidents") +
+  labs(title = "Accidents par tranche horaire") +
+  theme_minimal() +
+  scale_fill_manual(values = c("orange", "skyblue", "green", "red")) + 
+  theme(legend.position = "bottom") +
+  guides(fill = guide_legend(title = "Conséquence"))
+
+arranged_plots <- arrangeGrob(plot1 + theme(legend.position = "none"),
+                              plot2 + theme(legend.position = "none"),
+                              plot3 + theme(legend.position = "none"),
+                              plot4 + theme(legend.position = "none"),
+                              ncol = 2)
+
+# Ajouter une légende en bas
+legend <- cowplot::get_legend(plot4)
+
+# Afficher le graphique final avec la légende en bas
+gridExtra::grid.arrange(arranged_plots, legend, ncol = 1,
+                        heights = c(15, 1))
+```
+Nous allons nous concentré sur les années 2016, 2017 et 2018 qui représentent un très grand nombre d'accident pour Paris. 
+
+# Infrastructures Cyclables à Paris
+
+## Introduction de la base de données sur les pistes cyclables à Paris
+
+Avant d'étudier 
+
+## Étude des variations dans la création des pistes cyclables au fil du temps
+
+```{r arrPARISdetails, fig.cap="Évolution des pistes cyclables dans les arrondissements au fil des années", echo=FALSE, warning=FALSE}
+####################### ANALYSE PISTE CYCLABLE PARIS 
+data_piste_paris <- read.table("C:/Users/33662/Desktop/add_velo/data/data_cycle-piste.csv", sep=",", header = TRUE)
+df <- data_piste_paris
+
+
+# Créer un graphique à barres empilées pour l'évolution des arrondissements par année
+df <- df %>%
+  filter(Arrondissement != "NA")
+ggplot(df, aes(x = an, fill = factor(Arrondissement))) +
+  geom_bar(position = "stack", color = "black") +
+  ylab("Nb aménagement") +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+  guides(fill = guide_legend(title = "Arrondissements"))
+```
+
+On remarqu'en 2010, beaucoup d'aménagement ont été effecuté dans l'ensemble des arrondissements de Paris. Cependant, on constate que le deuxième arrondissement possède le moins d'aménagement de piste cyclable ! De plus, pas mal de travaux d'aménagement ont lieu entre 2016 et 2019, ce qui pourrai expliqué la présence d'un pic d'accident de vélo dans Paris étant donné que les cyclistes n'avaient donc pas de pistes cyclables de présent pour rouler dessus. 
+
+```{r arrPARISTypo, fig.cap="Évolution des typologies selon les arrondissements au fil des années", echo=FALSE, warning=FALSE}
+# Change les valeurs dans la colonne "Typologie"
+df <- df %>%
+  mutate(Typologie = ifelse(Typologie == "Autres itineraires cyclables (ex : Aires pietonnes - Contre-sens cyclables)", "Aires pietonnes", Typologie))
+
+# Affiche le data frame après le changement
+# Relation entre l'arrondissement et les typo des pistes 
+ggplot(df, aes(x = an, fill = factor(Arrondissement))) +
+  geom_bar(position = "stack", color = "black") +
+  facet_wrap(~Typologie, scales = "free_y") +
+  theme_minimal()+
+  ylab("Nb aménagement")+
+  theme(legend.position = "bottom") +
+  guides(fill = guide_legend(title = "Arrondissements")) +
+  # Ajustez la taille de la légende en modifiant les paramètres du thème
+  theme(legend.key.size = unit(0.3, "cm"), # Ajuste la taille de la clé de la légende
+        legend.title = element_text(size = 6), # Ajuste la taille du titre de la légende
+        legend.text = element_text(size = 5)) # Ajuste la taille du texte de la légende
+
+```
+
+On voit donc que selon les différentes typologies d'aménagements où les vélos peuvent circulés, les pistes et bandes cyclables dominent, avec encore une fois par exemple le faite que le deuxième arrondissement possède le moins d'aménagement pour les vélos. 
+
+# Croisement des Données : Accidents et Pistes Cyclables à Paris
+
+## Agrégation des données d'accidents par arrondissement à Paris
+
+```{r arrPARISaccident, fig.cap="Les accidents de vélos selon les arrondissements de Paris", echo=FALSE, warning=FALSE}
+######################## PARIS #########################"
+don <- read.table("C:/Users/33662/Desktop/add_velo/data/data_paris.csv", sep=",", header = TRUE)
+
+ggplot(don, aes(x = Arrondissement, fill = Consequence.x)) +
+  geom_bar(stat = "count", color = "black") +
+  coord_flip() +  # Cela inverse les axes, rendant le graphique horizontal
+  xlab("Arrondissement") + 
+  ylab("Nb accidents") +
+  theme_minimal() +
+  scale_fill_manual(values = c("orange", "skyblue", "green", "red")) + 
+  theme(legend.position = "bottom")+
+  guides(fill = guide_legend(title = "Conséquence"))
+
+```
+
+
+## Analyse des liens entre les accidents de vélos et la présence de pistes cyclables
+
+## Identification des arrondissements présentant des défis particuliers ou des améliorations nécessaires
+
+Sans surprise, le deuxième arrondissement possède la majorité des accidents de vélos suivi des 3ième, 10ième, 19ième et 20ième arrondissements. Concernant le 2ième arrondissement, une simple hypothèse viendrait du faite qu'il s'agit du centre même de Paris, donc la localisation qui regroupe le plus de personnes ! et d'autre part, nous avons aussi vu que le nombre d'aménagement étaient très bas dans cet arrondissement. 
+
+# Conclusion
+
+# Annexes
+
+## Base de données
+
+Mettre ici les natures des variables
+
+## Analyse univarié
+
+## Analyse bivarié
+
+## Analyse multivarié
