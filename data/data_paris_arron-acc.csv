@@ -71,56 +71,75 @@ lat,long,Consequence,Arrondissement
 48.8347,2.30515,Blesse leger,14.0
 48.8347,2.30515,Indemne,14.0
 48.8348,2.30469,Blesse leger,14.0
-48.8353,2.39275,Blesse leger,20.0
-48.8356,2.3925,Blesse leger,20.0
+48.8353,2.39275,Blesse leger,12.0
+48.8356,2.3925,Blesse leger,12.0
 48.8357,2.31847,Indemne,14.0
-48.8357,2.40216,Indemne,20.0
-48.8359,2.40564,Blesse leger,20.0
+48.8357,2.38605,Blesse leger,12.0
+48.8357,2.40216,Indemne,12.0
+48.8359,2.40564,Blesse leger,12.0
 48.836,2.3276,Blesse leger,14.0
+48.836,2.37267,Blesse leger,12.0
 48.8362,2.3064,Blesse leger,14.0
+48.8362,2.37145,Blesse leger,12.0
+48.8363,2.38501,Blesse leger,12.0
+48.8364,2.3713,Blesse leger,12.0
 48.8365,2.32336,Blesse hospitalise,14.0
-48.8367,2.40144,Blesse leger,20.0
-48.8367,2.40346,Blesse hospitalise,20.0
-48.8371,2.39,Blesse leger,20.0
-48.8371,2.40219,Blesse leger,20.0
+48.8366,2.38249,Blesse leger,12.0
+48.8367,2.38435,Blesse leger,12.0
+48.8367,2.40144,Blesse leger,12.0
+48.8367,2.40346,Blesse hospitalise,12.0
+48.837,2.3731,Blesse leger,12.0
+48.8371,2.39,Blesse leger,12.0
+48.8371,2.40219,Blesse leger,12.0
 48.8372,2.3178,Blesse leger,14.0
-48.8374,2.39117,Blesse leger,20.0
-48.8376,2.39086,Blesse leger,20.0
-48.8376,2.39092,Indemne,20.0
+48.8374,2.39117,Blesse leger,12.0
+48.8376,2.37364,Blesse leger,12.0
+48.8376,2.39086,Blesse leger,12.0
+48.8376,2.39092,Indemne,12.0
 48.8377,2.33116,Blesse leger,14.0
-48.8377,2.40077,Blesse leger,20.0
-48.8378,2.40036,Blesse leger,20.0
-48.8379,2.40004,Blesse leger,20.0
-48.8379,2.40386,Blesse leger,20.0
-48.8384,2.39294,Blesse leger,20.0
-48.8384,2.39868,Blesse hospitalise,20.0
+48.8377,2.40077,Blesse leger,12.0
+48.8378,2.40036,Blesse leger,12.0
+48.8379,2.40004,Blesse leger,12.0
+48.8379,2.40386,Blesse leger,12.0
+48.838,2.37325,Blesse leger,12.0
+48.8384,2.39294,Blesse leger,12.0
+48.8384,2.39868,Blesse hospitalise,12.0
 48.8385,2.32261,Blesse leger,14.0
-48.8385,2.39583,Blesse leger,20.0
+48.8385,2.38972,Blesse hospitalise,12.0
+48.8385,2.39583,Blesse leger,12.0
 48.8387,2.31435,Blesse leger,14.0
+48.8387,2.37234,Blesse leger,12.0
+48.8387,2.37568,Blesse leger,12.0
 48.8389,2.32028,Blesse leger,14.0
+48.8389,2.36978,Blesse leger,12.0
 48.839,2.31657,Blesse leger,14.0
-48.8391,2.3904,Blesse leger,20.0
-48.8391,2.39052,Blesse leger,20.0
+48.839,2.38921,Blesse leger,12.0
+48.8391,2.3904,Blesse leger,12.0
+48.8391,2.39052,Blesse leger,12.0
 48.8393,2.30489,Blesse leger,14.0
-48.8393,2.39332,Blesse leger,20.0
+48.8393,2.39332,Blesse leger,12.0
 48.8395,2.28997,Blesse leger,15.0
 48.8396,2.26773,Blesse leger,15.0
-48.8396,2.39689,Blesse leger,20.0
-48.8396,2.3981,Blesse leger,20.0
-48.8397,2.39619,Blesse leger,20.0
-48.8397,2.40886,Blesse leger,20.0
+48.8396,2.39689,Blesse leger,12.0
+48.8396,2.3981,Blesse leger,12.0
+48.8397,2.39619,Blesse leger,12.0
+48.8397,2.40886,Blesse leger,12.0
 48.8398,2.26759,Blesse leger,15.0
 48.8398,2.32368,Blesse leger,14.0
 48.84,2.29031,Blesse leger,15.0
 48.84,2.32386,Blesse leger,14.0
+48.8401,2.37072,Blesse leger,12.0
+48.8401,2.37072,Indemne,12.0
 48.8403,2.28584,Blesse leger,15.0
 48.8404,2.28389,Indemne,15.0
 48.8404,2.31491,Blesse leger,14.0
+48.8404,2.37898,Blesse leger,12.0
 48.8405,2.29943,Blesse leger,15.0
+48.8407,2.36958,Blesse leger,12.0
 48.8408,2.32152,Blesse leger,14.0
-48.8409,2.40468,Blesse leger,20.0
+48.8409,2.40468,Blesse leger,12.0
 48.841,2.32497,Blesse leger,14.0
-48.8411,2.39887,Blesse leger,20.0
+48.8411,2.39887,Blesse leger,12.0
 48.8412,2.32163,Indemne,14.0
 48.8413,2.29817,Blesse leger,15.0
 48.8413,2.32486,Blesse leger,14.0
@@ -133,33 +152,51 @@ lat,long,Consequence,Arrondissement
 48.842,2.3296,Blesse leger,14.0
 48.8422,2.32898,Blesse leger,14.0
 48.8422,2.35202,Blesse leger,5.0
+48.8422,2.37635,Blesse leger,12.0
 48.8423,2.31333,Blesse leger,14.0
+48.8423,2.376,Blesse hospitalise,12.0
 48.8426,2.26863,Blesse leger,15.0
-48.8426,2.40515,Blesse leger,20.0
+48.8426,2.40515,Blesse leger,12.0
 48.8427,2.35212,Blesse leger,5.0
+48.8427,2.38477,Blesse leger,12.0
 48.843,2.35216,Blesse leger,5.0
+48.843,2.38927,Blesse hospitalise,12.0
 48.8431,2.28349,Blesse leger,15.0
 48.8431,2.32635,Blesse leger,14.0
+48.8432,2.36615,Blesse leger,12.0
+48.8432,2.37439,Blesse leger,12.0
+48.8433,2.38372,Indemne,12.0
 48.8434,2.31404,Blesse leger,14.0
 48.8434,2.32414,Blesse leger,6.0
+48.8434,2.37071,Blesse leger,12.0
+48.8434,2.37071,Indemne,12.0
 48.8435,2.32493,Indemne,6.0
 48.8436,2.29323,Indemne,15.0
+48.8436,2.37053,Blesse leger,12.0
 48.8437,2.2863,Blesse leger,15.0
 48.8438,2.28188,Blesse leger,15.0
 48.8438,2.32295,Blesse leger,6.0
 48.8438,2.33751,Blesse leger,6.0
 48.8439,2.33896,Indemne,6.0
+48.8439,2.37319,Blesse leger,12.0
 48.844,2.33062,Blesse leger,6.0
+48.844,2.37294,Indemne,12.0
 48.8441,2.3231,Blesse leger,6.0
 48.8443,2.30227,Indemne,15.0
 48.8443,2.33299,Blesse leger,6.0
 48.8443,2.33915,Blesse leger,6.0
-48.8443,2.39019,Blesse leger,20.0
-48.8443,2.41032,Blesse leger,20.0
-48.8445,2.40626,Blesse leger,20.0
+48.8443,2.38153,Blesse hospitalise,12.0
+48.8443,2.39019,Blesse leger,12.0
+48.8443,2.41032,Blesse leger,12.0
+48.8444,2.38395,Blesse leger,12.0
+48.8444,2.38971,Blesse leger,12.0
+48.8445,2.38105,Blesse leger,12.0
+48.8445,2.40626,Blesse leger,12.0
 48.8446,2.29688,Blesse leger,15.0
-48.8447,2.40572,Blesse leger,20.0
+48.8447,2.36914,Blesse hospitalise,12.0
+48.8447,2.40572,Blesse leger,12.0
 48.8449,2.35222,Blesse leger,5.0
+48.845,2.36617,Blesse leger,12.0
 48.8451,2.28949,Blesse leger,15.0
 48.8451,2.32016,Blesse hospitalise,6.0
 48.8451,2.32016,Blesse leger,6.0
