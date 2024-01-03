@@ -24,9 +24,9 @@
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2.5cm]{geometry}
 \usepackage{hyperref}
 \hypersetup{unicode=true,
-            pdftitle={Projet Analyse de données},
+            pdftitle={Analyse de données des Accidents de Vélos en France Métropolitaine avec une étude sur le cas Parisien},
             pdfauthor={Léo GABET},
-            pdfkeywords={Langage python maos zencore},
+            pdfkeywords={ACP/AFC/ACM},
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
@@ -62,6 +62,15 @@
 
 % END
 \usepackage{longtable,booktabs}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
 \IfFileExists{parskip.sty}{%
 \usepackage{parskip}
 }{% else
@@ -160,16 +169,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Processing title
-  \newcommand{\titlehead}{Projet Analyse de données}
-  \title{Projet Analyse de données}
+  \newcommand{\titlehead}{Analyse de données des Accidents de Vélos en France Métropolitaine avec une étude sur le cas Parisien}
+  \title{Analyse de données des Accidents de Vélos en France Métropolitaine avec une étude sur le cas Parisien}
     % Processing authors
   \newcounter{nbaut}
   \setcounter{nbaut}{9} % Nombre d'auteurs
   \author{Léo GABET}
-      \date{01 janvier 2024}
+      \date{03 janvier 2024}
 
- \resume{BLABLA}
- \keywords{Langage python maos zencore.}
+ \resume{Dans le cadre de ce projet d'analyse de données, une étude sur les accidents de vélo en France sera prévue. L'analyse se concentre sur la compréhension des schémas sous-jacents à ces incidents, avec l'objectif d'identifier des tendances significatives pour informer les initiatives de sécurité routière et améliorer la sécurité des cyclistes.}
+ \keywords{ACP/AFC/ACM.}
 
  \coefficient{50 \%}
 
@@ -178,7 +187,7 @@
 %\email{\href{mailto:leo.gabet@etudiant.univ-reims.fr}{\nolinkurl{leo.gabet@etudiant.univ-reims.fr}}}
 \logouniv{logo_URCA.pdf}
 \logoufr{logoSEN.pdf}
-\date{01 janvier 2024}
+\date{03 janvier 2024}
 \diplome{M2 SEP}
 \anac{2023-2024}
 \module{SEP0931}
@@ -248,7 +257,7 @@
 % \pagebreak
 % 
 % % \begin{abstract}
-% BLABLA
+% Dans le cadre de ce projet d'analyse de données, une étude sur les accidents de vélo en France sera prévue. L'analyse se concentre sur la compréhension des schémas sous-jacents à ces incidents, avec l'objectif d'identifier des tendances significatives pour informer les initiatives de sécurité routière et améliorer la sécurité des cyclistes.
 % \end{abstract}
 % 
 
@@ -272,25 +281,25 @@
 \hypertarget{contexte-de-luxe9tude}{%
 \subsection{Contexte de l'étude}\label{contexte-de-luxe9tude}}
 
-Le vélo est devenu un mode de transport de plus en plus populaire à travers le monde, offrant une alternative écologique et saine aux moyens de déplacement traditionnels. En France, l'a promotion de 'intérêt de l'utilisation du vélo est devenue une priorité, avec des efforts déployés pour créer des infrastructures adaptées, telles que des pistes cyclables, afin de favoriser la sécurité des cyclistes et encourager la pratique du vélo.
+Le vélo est devenu un mode de transport de plus en plus populaire à travers le monde, offrant une alternative écologique et saine aux moyens de déplacement traditionnel. En France, la promotion de l'intérêt de l'utilisation du vélo est devenue une priorité, avec des efforts déployés pour créer des infrastructures adaptées, telles que des pistes cyclables, afin de favoriser la sécurité des cyclistes et encourager la pratique du vélo.
 
 Cependant, malgré ces initiatives, la sécurité des cyclistes sur les routes reste une préoccupation majeure. Les accidents de vélos peuvent avoir des conséquences graves, mettant en lumière la nécessité d'une compréhension approfondie des facteurs contribuant à ces incidents. Dans ce contexte, l'analyse de données offre une approche précieuse pour examiner les tendances, les corrélations et les déterminants des accidents de vélos en France.
 
 Cette analyse s'appuiera sur deux jeux de données différents. D'une part, une base de données détaillant les accidents de vélos survenus à travers le pays fournira des informations précieuses sur les circonstances, la gravité et les lieux des incidents. D'autre part, une base de données spécifique à Paris, décrivant la création et l'emplacement des pistes cyclables, permettra d'explorer la corrélation entre l'infrastructure dédiée aux cyclistes et la fréquence des accidents.
 
-L'objectif de cette analyse est de dégager des tendances significatives, de mettre en évidence les zones à risque élevé, et d'évaluer l'impact des pistes cyclables sur la sécurité des cyclistes. En comprenant les facteurs sous-jacents aux accidents de vélos, il devient possible d'orienter les politiques publiques, d'améliorer les infrastructures et de promouvoir des mesures préventives pour garantir une cohabitation sûre et efficace entre les cyclistes et les autres usagers de la route.
+L'objectif de cette analyse est de dégager des tendances significatives, de mettre en évidence les zones à risque élevées, et d'évaluer l'impact des pistes cyclables sur la sécurité des cyclistes. En comprenant les facteurs sous-jacents aux accidents de vélos, il devient possible d'orienter les politiques publiques, d'améliorer les infrastructures et de promouvoir des mesures préventives pour garantir une cohabitation sûre et efficace entre les cyclistes et les autres usagers de la route.
 
 Cette étude contribuera ainsi à la promotion d'une mobilité durable, en mettant en lumière les défis actuels et en proposant des solutions basées sur des données probantes pour renforcer la sécurité des cyclistes en France.
 
 \hypertarget{donnuxe9es}{%
 \subsection{Données}\label{donnuxe9es}}
 
-Les jeux de données comprennent une couverture complète des accidents de vélo à l'échelle nationale en France disponibles sur le site \textbf{data gouv}\footnote{\url{https://www.data.gouv.fr/fr/datasets/accidents-de-velo/\#/resources}}, offrant une vue d'ensemble des incidents survenus dans tout le pays. Un second jeu de données se concentre spécifiquement sur les pistes cyclables provenant du site \textbf{data Paris}\footnote{\url{https://opendata.paris.fr/explore/dataset/reseau-cyclable/information}}, cartographiant l'infrastructure dédiée dans diverses localités. Enfin, un troisième jeu de données se focalise sur les accidents de vélo à Paris (filtré de notre première base de donnée avec rajout des arrondissements). Ces ensembles de données permettent d'analyser les tendances, de localiser les zones à risques et d'évaluer l'impact des pistes cyclables sur la sécurité, offrant ainsi une compréhension approfondie de la situation des cyclistes en France.
+Les jeux de données comprennent une couverture complète des accidents de vélo à l'échelle nationale en France disponibles sur le site \textbf{data gouv}\footnote{\url{https://www.data.gouv.fr/fr/datasets/accidents-de-velo/\#/resources}}, offrant une vue d'ensemble des incidents survenus dans tout le pays. Un second jeu de données se concentre spécifiquement sur les pistes cyclables provenant du site \textbf{data Paris}\footnote{\url{https://opendata.paris.fr/explore/dataset/reseau-cyclable/information}}, cartographiant l'infrastructure dédiée dans diverses localités. Enfin, un troisième jeu de données se focalise sur les accidents de vélo à Paris (filtré de notre première base de données avec rajout des arrondissements). Ces ensembles de données permettent d'analyser les tendances, de localiser les zones à risques et d'évaluer l'impact des pistes cyclables sur la sécurité, offrant ainsi une compréhension approfondie de la situation des cyclistes en France.
 
 \hypertarget{plan-de-luxe9tude}{%
 \subsection{Plan de l'étude}\label{plan-de-luxe9tude}}
 
-Notre première étape consistera à dégager les tendances des accidents de vélos et à localiser les zones à risques élevés à l'échelle nationale.
+Notre première étape consistera à dégager les tendances des accidents de vélos et à localiser les zones à risques élevées à l'échelle nationale.
 
 La deuxième phase de notre étude se concentrera sur l'analyse de la base de données détaillant les pistes cyclables à Paris. Cette démarche vise à cartographier ces infrastructures et à examiner leur évolution au fil du temps. Comprendre ces dynamiques est essentiel pour évaluer l'influence de l'infrastructure sur la sécurité des cyclistes.
 
@@ -310,12 +319,10 @@ Au-delà des chiffres et des statistiques, une exploration visuelle des données
 
 }
 
-\caption{Représentation des accidents de vélo en France par année, mois, jour et horaire}\label{fig:accfrancedetail}
+\caption{Représentation des accidents de vélo en France par année, mois, jour et horaire / Lecture graphique : Les accidents de vélos se déroulent principalement en jours de semaine durant les après-midis lors des mois à température douce voir chaude, tel que le mois de juin qui représente un pic des accidents de vélos sur 13 ans / Source : Léo GABET RStudio}\label{fig:accfrancedetail}
 \end{figure}
 
-\emph{\textbf{Lecture graphique} : Les accidents de vélos se déroulent principalement durant les mois à température douce voir chaude, tel que le mois de juin qui représente un pic des accidents de vélos sur 13 ans. On contaste bien que le type de jour lié aux accidents correspond aux jours de la semaine, avec une très grande part d'accident lors des après-midi.}
-
-Au regard des données, plusieurs hypothèses émergent pour expliquer les schémas observés dans les accidents de vélo. L'augmentation des incidents pendant les mois chauds suggère une affluence plus importante de cyclistes par temps agréable. La concentration d'accidents en juin pourrait résulter de la fin de l'année scolaire, incitant potentiellement les jeunes à être plus actifs à vélo. Les après-midis se distinguent par une fréquence élevée d'incidents, probablement liée à la routine quotidienne et aux déplacements après le travail ou l'école. Les conditions de visibilité réduite en après-midi pourraient également contribuer à l'augmentation des accidents. De plus, les variations saisonnières et les moments de la journée semblent influencer les comportements des cyclistes, impactant ainsi le nombre d'accidents. Ces hypothèses fournissent une première approche pour interpréter les tendances, mais des analyses plus approfondies sont nécessaires pour confirmer ces impressions préliminaires.
+Au regard des données, plusieurs hypothèses émergent pour expliquer les schémas observés dans les accidents de vélo. L'augmentation des incidents pendant les mois chauds suggère une affluence plus importante de cyclistes par temps agréable. La concentration d'accidents en juin pourrait résulter de la fin de l'année scolaire, incitant potentiellement les jeunes à être plus actifs à vélo. Les après-midis se distinguent par une fréquence élevée d'incidents, probablement liée à la routine quotidienne et aux déplacements après le travail ou l'école. Les conditions de visibilité réduite en après-midi pourraient également contribuer à l'augmentation des accidents. De plus, les variations saisonnières et les moments de la journée semblent influencer les comportements des cyclistes, impactant ainsi le nombre d'accidents. De plus, il y a une forte diminution des accidents en 2018 (tout comme en 2006) montrant l'intérêt des campagnes de préventions. Ces hypothèses fournissent une première approche pour interpréter les tendances, mais des analyses plus approfondies sont nécessaires pour confirmer ces impressions préliminaires.
 
 \hypertarget{identification-des-zones-uxe0-risques-uxe9levuxe9s-uxe0-luxe9chelle-du-pays}{%
 \subsubsection{Identification des zones à risques élevés à l'échelle du pays}\label{identification-des-zones-uxe0-risques-uxe9levuxe9s-uxe0-luxe9chelle-du-pays}}
@@ -326,12 +333,10 @@ Au regard des données, plusieurs hypothèses émergent pour expliquer les sché
 
 }
 
-\caption{Accidents en France en fonction des régions}\label{fig:accfranceregion}
+\caption{Accidents en France en fonction des régions / Lecture graphique : Une grande partie des accidents de vélo en France se déroule principalement en île de France, avec un très faible taux d'accident en Normandie / Source : Léo GABET RStudio}\label{fig:accfranceregion}
 \end{figure}
 
-\emph{\textbf{Lecture graphique} : Une grande partie des accidents de vélo en France se déroule principalement en île de France, avec une très faible présence d'accidence en Provence-Alpes-Cote d'Azur (et Corse).}
-
-La carte des accidents de vélo met en lumière une disparité significative entre les régions françaises. L'Île-de-France, avec sa densité de population et son réseau routier complexe, émerge comme une zone à risque élevé, reflétant peut-être l'intensité des déplacements urbains à vélo. En revanche, la faible incidence en Provence-Alpes-Côte d'Azur et en Corse soulève des questions intrigantes sur les facteurs qui contribuent à ce phénomène. Les différences dans l'infrastructure cyclable, les habitudes de déplacement, ou même les conditions météorologiques pourraient jouer un rôle clé dans cette disparité régionale.
+La carte des accidents de vélo met en lumière une disparité significative entre les régions françaises. L'Île-de-France, avec sa densité de population et son réseau routier complexe, émerge comme une zone à risque élevée, reflétant peut-être l'intensité des déplacements urbains à vélo. En revanche, la faible incidence en Centre Val de Loire et en Normandie soulève des questions intrigantes sur les facteurs qui contribuent à ce phénomène. Les différences dans l'infrastructure cyclable, les habitudes de déplacement, ou même les conditions météorologiques pourraient jouer un rôle clé dans cette disparité régionale. Les régions à température ``chaude'' tel que l'Auvergne Rhone Alpes ou la Nouvelle Aquitaine peuvent impacter le taux d'incidence ou par exemple la morphologie des régions de manière ``Montagneuse'' qui donc représente un plus grand risque en cas d'accident de vélo.
 
 \hypertarget{facteurs-et-contextes}{%
 \subsubsection{Facteurs et contextes}\label{facteurs-et-contextes}}
@@ -342,13 +347,11 @@ La carte des accidents de vélo met en lumière une disparité significative ent
 
 }
 
-\caption{Représentation des accidents de vélo en France par les contextes des collisions et choc subi avec les équipements de sécurités}\label{fig:accCONTEXTE}
+\caption{Représentation des accidents de vélo en France par les contextes des collisions et choc subi avec les équipements de sécurités / Lecture graphique : C'est lors de promenade et loisirs que les accidents de vélos se produisent le plus souvent, notamment par les voitures sur les cotés provoquant pour la plus part des chocs avant. On relève néanmoins que la plus part des accidentés possèdent au minima un casque pour leur équipement de sécurité, ce qui pourrait expliqué la forte présence de la conséquence *blessé léger* / Source : Léo GABET RStudio}\label{fig:accCONTEXTE}
 \end{figure}
 
-\emph{\textbf{Lecture graphique} : C'est lors de promenade et loisirs que les accidents de vélos se produisent le plus souvent, notamment par les voitures sur les cotés provoquant pour la plus part des chocs avant. On relève néanmoins que la plus part des accidentés possèdent au minima un casque pour leur équipement de sécurité, ce qui pourrait expliqué la forte présence de la conséquence ``blessé léger''.}
-
-Les données dévoilent un panorama où les escapades récréatives et les moments de détente sont les principaux catalyseurs des accidents de vélo reflètent bien l'utilisation du vélo au quotidient.
-Les rencontres avec des voitures sur les côtés, souvent associées à des chocs frontaux, émergent comme des scénarios prédominants. Cette tendance soulève des questions sur les interactions spécifiques entre les cyclistes et les véhicules, ainsi que sur les conditions routières pendant ces moments particuliers. En effet, ces accidents sont causés par beaucoup de conducteurs inattentif au volant, mais aussi certainement par des cyclistes qui ne respectent pas toujours le code de la route.
+Les données dévoilent un panorama où les escapades récréatives et les moments de détente sont les principaux catalyseurs des accidents de vélo ce qui reflètent bien l'utilisation du vélo au quotidient.
+Les rencontres avec des voitures sur les côtés, souvent associées à des chocs frontaux, surviennent comme des scénarios prédominants. Cette tendance soulève des questions sur les interactions spécifiques entre les cyclistes et les véhicules, ainsi que sur les conditions routières pendant ces moments particuliers. En effet, ces accidents sont causés par beaucoup de conducteurs inattentifs au volant, mais aussi certainement par des cyclistes qui ne respectent pas toujours le code de la route.
 Malgrès tout, l'observation selon laquelle la majorité des accidentés portent au moins un casque constitue un point intéressant. Cette précaution pourrait expliquer en partie la fréquence élevée des conséquences répertoriées comme ``blessé léger'', mais aussi de l'effet important de la prévoyance de porter un casque de sécurité lorsqu'on fait du vélo.
 
 \hypertarget{infrastructures-cyclables-uxe0-paris}{%
@@ -363,13 +366,11 @@ Malgrès tout, l'observation selon laquelle la majorité des accidentés portent
 
 }
 
-\caption{Évolution des pistes cyclables dans les arrondissements au fil des années}\label{fig:arrPARISdetails}
+\caption{Évolution des pistes cyclables dans les arrondissements au fil des années / Lecture graphique : On remarqu'en 2010, beaucoup d'aménagement ont été effecuté dans l'ensemble des arrondissements de Paris. Cependant, on constate que le deuxième arrondissement possède le moins d'aménagement de piste cyclable ! De plus, pas mal de travaux d'aménagement ont lieu entre 2016 et 2019, ce qui pourrait expliqué la présence d'un pic d'accident de vélo dans Paris étant donné que les cyclistes n'avaient donc pas de pistes cyclables de présent pour rouler dessus / Source : Léo GABET RStudio}\label{fig:arrPARISdetails}
 \end{figure}
 
-\emph{\textbf{Lecture graphique} : On remarqu'en 2010, beaucoup d'aménagement ont été effecuté dans l'ensemble des arrondissements de Paris. Cependant, on constate que le deuxième arrondissement possède le moins d'aménagement de piste cyclable ! De plus, pas mal de travaux d'aménagement ont lieu entre 2016 et 2019, ce qui pourrai expliqué la présence d'un pic d'accident de vélo dans Paris étant donné que les cyclistes n'avaient donc pas de pistes cyclables de présent pour rouler dessus.}
-
 L'effort consacré aux aménagements cyclables à Paris en 2010 témoigne d'une volonté de favoriser la mobilité douce. Toutefois, la disparité dans la distribution de ces aménagements, en particulier dans le deuxième arrondissement, suscite des questions sur les priorités d'urbanisme et les défis potentiels pour les cyclistes dans cette zone spécifique.
-La période de travaux intensive entre 2016 et 2019 offre un contexte temporel intrigant, suggérant que l'absence de pistes cyclables opérationnelles pourrait avoir contribué à un pic d'accidents de vélo dans Paris. Les cyclistes, privés d'infrastructures dédiées, pourraient avoir été confrontés à des conditions moins sécurisées, soulignant l'importance cruciale de l'infrastructure cyclable dans la prévention des accidents.
+La période de travaux intensive du plan d'action de la mairie de Paris dirigée par Anne Hidalgo entre 2016 et 2019\footnote{\url{https://www.pariszigzag.fr/paris-au-quotidien/lobjectif-cest-de-faire-une-ville-100-cyclable-la-mairie-devoile-son-plan-velo-2021-2026}} offre un contexte temporel intrigant, suggérant que l'absence de pistes cyclables opérationnelles pourrait avoir contribué à un pic d'accidents de vélo dans Paris. Les cyclistes, privés d'infrastructures dédiées, pourraient avoir été confrontés à des conditions moins sécurisées, soulignant l'importance cruciale de l'infrastructure cyclable dans la prévention des accidents.
 
 \hypertarget{type-damuxe9nagement}{%
 \subsubsection{Type d'aménagement}\label{type-damuxe9nagement}}
@@ -380,10 +381,8 @@ La période de travaux intensive entre 2016 et 2019 offre un contexte temporel i
 
 }
 
-\caption{Évolution des typologies selon les arrondissements au fil des années}\label{fig:arrPARISTypo}
+\caption{Évolution des typologies selon les arrondissements au fil des années / Lecture graphique : On voit donc que selon les différentes typologies d'aménagements où les vélos peuvent circulés, les pistes et bandes cyclables dominent, avec encore une fois par exemple le fait que le deuxième arrondissement possède le moins d'aménagement pour les vélos / Source : Léo GABET RStudio}\label{fig:arrPARISTypo}
 \end{figure}
-
-\emph{\textbf{Lecture graphique} : On voit donc que selon les différentes typologies d'aménagements où les vélos peuvent circulés, les pistes et bandes cyclables dominent, avec encore une fois par exemple le faite que le deuxième arrondissement possède le moins d'aménagement pour les vélos.}
 
 L'écrasante prédominance des pistes et bandes cyclables dans le paysage des aménagements pour les vélos suggère une attention particulière portée à ces infrastructures. Cependant, la constatation que le deuxième arrondissement est à la traîne en matière d'aménagements souligne l'importance de la planification urbaine ciblée pour garantir une accessibilité équitable et sécurisée pour tous les cyclistes. Il ne faut pas oublier aussi que le duexième arrondissement n'est autre que le centre de Paris, donc un lieu très visité avec une circulation intensive de vélos, passants et voitures.
 Cette disparité pourrait influencer directement l'expérience des cyclistes dans le deuxième arrondissement, les exposant potentiellement à des conditions de circulation moins optimales.
@@ -392,7 +391,7 @@ En synthèse, l'analyse des différents types d'aménagements souligne l'importa
 \hypertarget{les-accidents-de-vuxe9los-uxe0-paris}{%
 \subsection{Les accidents de vélos à Paris}\label{les-accidents-de-vuxe9los-uxe0-paris}}
 
-Nous allons nous concentré sur les années 2016, 2017 et 2018 qui représentent un très grand nombre d'accident pour Paris.
+Nous allons nous concentrer sur les années 2016, 2017 et 2018 qui représentent une grande diminution des accidents de vélos pour Paris.
 
 \begin{figure}[H]
 
@@ -400,14 +399,13 @@ Nous allons nous concentré sur les années 2016, 2017 et 2018 qui représentent
 
 }
 
-\caption{Représentation des accidents de vélo à Paris par année, mois, jour et horaire}\label{fig:accParisdetail}
+\caption{Représentation des accidents de vélo à Paris par année, mois, jour et horaire / Lecture graphique : Nous retrouvons une analyse similaire à l'echelle de la France entière avec cependant un plus grand nombre d'acccidents lors du soir / Source : Léo GABET RStudio}\label{fig:accParisdetail}
 \end{figure}
 
-\emph{\textbf{Lecture graphique} : Nous retrouvons une analyse similaire à l'echelle de la France entière avec cependant un plus grand nombre d'acccident lors du soir.}
-
-La métropole, particulièrement propice aux déplacements à vélo, voit une augmentation des incidents pendant les mois chauds, ce qui pourrait être attribuable à la forte présence de cyclistes profitant des conditions estivales. Le pic en juin pourrait également être amplifié par la fin de l'année scolaire, incitant les jeunes parisiens à être plus actifs à vélo.
-Concernant les après-midis, la routine quotidienne parisienne, marquée par les déplacements fréquents après le travail ou l'école, pourrait expliquer la concentration d'accidents pendant cette période. Les conditions de visibilité réduite en après-midi, peut-être accentuées par l'ombre des bâtiments emblématiques de Paris, pourraient jouer un rôle dans cette tendance.
+La ville de Paris, particulièrement propice aux déplacements à vélo, voit une augmentation des incidents pendant les mois chauds, ce qui pourrait être attribuable à la forte présence de cyclistes profitant des conditions estivales. Le pic en juin pourrait également être amplifié par la fin de l'année scolaire, incitant les jeunes parisiens à être plus actifs à vélo.
+Concernant les après-midis, la routine quotidienne parisienne, marquée par les déplacements fréquents après le travail ou l'école et les conditions de visibilité réduite en soirée et le fait que beaucoup utilise le vélo comme moyen de transport pour leur travail (par exemple les livreurs), pourrait expliquer la concentration d'accidents pendant ces périodes.
 Les variations saisonnières et les particularités de la routine quotidienne parisienne influencent ainsi les comportements des cyclistes, impactant le nombre d'accidents.
+La diminution du nombre d'accidents résulte bien de la politque pour l'infrastructure cyclable mise en place par madame la maire de Paris Anne Hidalgo.
 
 \hypertarget{identification-des-arrondissements-uxe0-risques-uxe9levuxe9s}{%
 \subsubsection{Identification des arrondissements à risques élevés}\label{identification-des-arrondissements-uxe0-risques-uxe9levuxe9s}}
@@ -418,10 +416,8 @@ Les variations saisonnières et les particularités de la routine quotidienne pa
 
 }
 
-\caption{Les accidents de vélos selon les arrondissements de Paris}\label{fig:arrPARISaccident}
+\caption{Les accidents de vélos selon les arrondissements de Paris / Lecture graphique : Sans surprise, le 2ème arrondissement possède la majorité des accidents de vélos suivi des 3ième, 10ième, 19ième et 20ième arrondissements. Concernant le 2ième arrondissement, une simple hypothèse viendrait du fait qu'il s'agit du centre même de Paris, donc la localisation qui regroupe le plus de personnes ! et d'autre part, nous avons aussi vu que le nombre d'aménagement était très bas dans cet arrondissement / Source : Léo GABET RStudio}\label{fig:arrPARISaccident}
 \end{figure}
-
-\emph{\textbf{Lecture graphique} : Sans surprise, le 2ème arrondissement possède la majorité des accidents de vélos suivi des 3ième, 10ième, 19ième et 20ième arrondissements. Concernant le 2ième arrondissement, une simple hypothèse viendrait du faite qu'il s'agit du centre même de Paris, donc la localisation qui regroupe le plus de personnes ! et d'autre part, nous avons aussi vu que le nombre d'aménagement étaient très bas dans cet arrondissement.}
 
 Le 2ème arrondissement, étant le centre névralgique de Paris, se caractérise par une activité frénétique et une densité de population élevée. Cette situation peut contribuer à une fréquence plus élevée d'accidents de vélo, en raison du volume important de déplacements dans cette zone centrale. De plus, comme précédemment observé, le faible nombre d'aménagements cyclables dans le 2ème arrondissement pourrait accentuer les risques d'incidents.
 Quant aux autres arrondissements cités, des analyses plus approfondies pourraient explorer des facteurs spécifiques tels que la topographie, la densité de circulation, ou la présence d'aménagements dédiés dans ces zones.
@@ -436,31 +432,33 @@ Cette observation renforce l'idée que la sécurité des cyclistes à Paris dép
 
 }
 
-\caption{Représentation des accidents de vélo à Pairs par les contextes des collisions et choc subi avec les équipements de sécurités}\label{fig:accCONTEXTE2}
+\caption{Représentation des accidents de vélo à Pairs par les contextes des collisions et chocs subis avec les équipements de sécurités / Lecture graphique : Tout comme à l'echelle de la France entière, nous retrouvons des similitudes, cependant on constate que c'est aussi lors des trajets pour aller au travail que les accidents se produisent et lors d'utilisation professionelle en plus des promenades de loisirs. Il y a aussi une majorité d'accident de type blessé léger, ce qui rejoint le fait que la quasi totalité possèdent un casque de sécurité / Source : Léo GABET RStudio}\label{fig:accCONTEXTE2}
 \end{figure}
-
-\emph{\textbf{Lecture graphique} : Tout comme à l'echelle de la France entière, nous retrouvons des similitudes, cependant on constate que c'est aussi lors des trajets pour aller au travail que les accidents se produisent et lors d'utilisation professionelle en plus des promenades de loisirs. Il y a aussi une majorité d'accident de type blessé léger, ce qui rejoint le fait que la quasi totalité possèdent un casque de sécurité.}
 
 À Paris, les trajets domicile-travail sont des moments sensibles, probablement influencés par la densité de la circulation et les défis liés à la navigation urbaine. L'utilisation professionnelle des vélos, peut-être liée aux livraisons ou aux déplacements professionnels, contribue également aux incidents. Ces observations soulignent la nécessité de politiques de sécurité routière spécifiquement adaptées aux besoins des cyclistes urbains parisiens.
 La prédominance d'accidents classés en ``blessé léger'' s'explique en partie par la généralisation du port de casques de sécurité. Ceci suggère que bien que les accidents surviennent, les dispositifs de sécurité individuels peuvent atténuer la gravité des blessures. Cependant, il demeure crucial d'investir dans la prévention pour réduire le nombre d'accidents à la source.
 En somme, cette analyse locale renforce l'idée que les particularités de Paris en matière de déplacements urbains influent sur les tendances des accidents de vélo, soulignant l'importance de mesures de sécurité routière adaptées à la dynamique spécifique de la capitale.
 
+\newpage
+
 \hypertarget{conclusions-et-perspectives}{%
 \section{Conclusions et perspectives}\label{conclusions-et-perspectives}}
 
-L'exploration approfondie des données sur les accidents de vélos offre un aperçu significatif des tendances et des défis associés à la sécurité des cyclistes. Durant la période de 2016 à 2018, une augmentation notable des incidents a été constatée, suscitant l'intérêt pour des recherches complémentaires visant à identifier les facteurs socio-économiques et environnementaux qui ont pu contribuer à cette hausse.
+L'exploration approfondie des données sur les accidents de vélos offre un aperçu significatif des tendances et des défis associés à la sécurité des cyclistes. Durant la période de 2016 à 2018, une diminution notable des incidents a été constatée, suscitant l'intérêt pour des recherches complémentaires visant à identifier les facteurs socio-économiques et environnementaux qui ont pu contribuer à cette hausse.
 
 Le mois de juin se révèle être une période critique, soulignant la nécessité de campagnes de sensibilisation saisonnières pour renforcer les comportements sécuritaires des cyclistes. L'analyse des jours de la semaine et des tranches horaires met en lumière des moments spécifiques où des mesures de prévention renforcées pourraient être mises en œuvre pour réduire les risques.
 
-La concentration d'accidents en Île-de-France met en exergue l'importance d'investissements ciblés dans l'infrastructure cyclable de cette région. Des améliorations significatives pourraient être apportées en tenant compte des données sur les zones à risque élevé.
+La concentration d'accidents en Île-de-France met en exergue l'importance d'investissements ciblés dans l'infrastructure cyclable de cette région. Des améliorations encore plus significatives pourraient être apportées en tenant compte des données sur les zones à risque élevées, ce qui est déjà en action au vu de l'intérêt des pistes cyclables.
 
 Les accidents liés aux activités de loisir soulignent l'importance de sensibiliser les cyclistes non seulement en tant qu'utilisateurs de transport, mais aussi en tant que participants à des loisirs. Des campagnes éducatives spécifiques pourraient encourager des comportements prudents dans ces contextes particuliers.
 
 L'analyse détaillée de Paris entre 2016 et 2018 révèle des disparités significatives entre les arrondissements, avec le 2ème arrondissement enregistrant le plus grand nombre d'accidents. Ce constat met en évidence la nécessité d'une planification urbaine plus attentive et d'un renforcement des aménagements cyclables, en particulier dans les zones à risque élevé.
 
-En se penchant sur les types de collisions et l'équipement de sécurité, la tendance de comportements responsables et de l'utilisation d'équipements de protection peut jouer un rôle clé dans la réduction des blessures graves. La moyenne d'âge des victimes suggère également la nécessité d'adapter les programmes de sécurité routière pour atteindre un public diversifié, des jeunes adultes aux personnes plus âgées.
+En se penchant sur les types de collisions et l'équipement de sécurité, la tendance de comportements responsables et de l'utilisation d'équipements de protection peut jouer un rôle clé dans la réduction des blessures graves. La moyenne d'âge des victimes suggère également la nécessité d'adapter les programmes de sécurité routière pour atteindre un public diversifié, des jeunes adultes aux personnes plus âgées (voir la partie complément en annexe).
 
 En conclusion, cette analyse offre des perspectives pour orienter les efforts de prévention et d'aménagement urbain, soulignant l'importance de l'engagement communautaire, de la sensibilisation continue et de la collaboration entre les autorités locales et les parties prenantes pour créer des environnements plus sûrs pour les cyclistes.
+
+\newpage
 
 \hypertarget{annexes}{%
 \section{Annexes}\label{annexes}}
@@ -468,7 +466,23 @@ En conclusion, cette analyse offre des perspectives pour orienter les efforts de
 \hypertarget{base-de-donnuxe9es}{%
 \subsection{Base de données}\label{base-de-donnuxe9es}}
 
-Mettre ici les natures des variables
+Les bases utilisés après nettoyage sont :
+
+\begin{itemize}
+\tightlist
+\item
+  ``data\_france'' pour l'ensemble des accidents de vélos en France, avec rajout des régions
+\item
+  ``data\_paris'' qui est une sous base de ``data\_france'' avec rajout des arrondissements de Paris
+\item
+  ``data\_cycle-piste'' qui est une base qui récapitule les aménagements des pistes cyclabes à Paris
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics{../VAR.png}
+\caption{Nature des variables exploités de nos bases / Source : Léo GABET Excel}
+\end{figure}
 
 \hypertarget{compluxe9ment}{%
 \subsection{Complément}\label{compluxe9ment}}
@@ -479,11 +493,25 @@ Mettre ici les natures des variables
 
 }
 
-\caption{Représentation des accidents de vélo en France par catégorie d'âge et genre}\label{fig:accfranceComple}
+\caption{Représentation des accidents de vélo en France par catégorie d'âge et genre / Lecture graphique : La majorité des accidents se situent dans la tranche d'âge 19-30 ans avec une majorité masculine dans la globalité des accidents et un taux mortel d'accident pour les plus de 60 ans / Source : Léo GABET RSstudio}\label{fig:accfranceComple}
 \end{figure}
 
-\hypertarget{acp-sur-nos-variables-quantitatives-annuxe9e-uxe2ge-et-duxe9partement}{%
-\subsection{ACP sur nos variables quantitatives année, âge et département}\label{acp-sur-nos-variables-quantitatives-annuxe9e-uxe2ge-et-duxe9partement}}
+On constate une diminution des cas ``blessé léger / Indemne'' et une augmentation des cas ``Blessé hospitalisé / tué'' du plus jeune au plus vieux groupe d'âge par catégorie, avec une forte présence des cas ``tué'' pour les plus de 60 ans. Ce constat rejoint la logique du corps humain qui s'affaiblit au cours du temps et donc plus propice à avoir des accidents plus graves. Il y a tout de même un sacré pic d'accident pour les jeunes, montrant l'intérêt de promouvoir, voir d'obliger le port d'équipement de sécurité dès lors, que nous faisons du vélo. Cela rejoint la même idée du port de la ceinture lorsque nous sommes en voiture par exemple.
+
+\newpage
+
+\begin{figure}
+\centering
+\includegraphics{../VELO.png}
+\caption{Plan aménagement pistes cyclables Paris / Source : \url{https://www.pistes-cyclables.com/2019/06/plan-des-pistes-cyclables-de-paris-2020/}}
+\end{figure}
+
+Ce plan vise à faire de Paris la capitale mondiale du vélo, projet fondamental mené par Anne Hildago\footnote{Anne Hidalgo, femme politique française, membre du Parti socialiste, a été la maire de Paris depuis 2014, mettant en avant des politiques axées sur la mobilité durable et la lutte contre la pollution.}.
+
+\newpage
+
+\hypertarget{acp---annuxe9euxe2geduxe9partement}{%
+\subsubsection{ACP - année/âge/département}\label{acp---annuxe9euxe2geduxe9partement}}
 
 Voici une interprétation plus spécifique en considérant les variables ``an'' (année), ``dep'' (département), et ``age'' (âge) :
 
@@ -495,39 +523,39 @@ Voici une interprétation plus spécifique en considérant les variables ``an'' 
 ## 
 ## Eigenvalues
 ##                        Dim.1   Dim.2   Dim.3
-## Variance               1.219   0.987   0.794
-## % of var.             40.644  32.890  26.465
-## Cumulative % of var.  40.644  73.535 100.000
+## Variance               1.106   1.019   0.875
+## % of var.             36.867  33.965  29.168
+## Cumulative % of var.  36.867  70.832 100.000
 ## 
 ## Individuals (the 10 first)
 ##         Dist    Dim.1    ctr   cos2    Dim.2    ctr   cos2    Dim.3    ctr
-## 1   |  3.420 | -2.138  0.037  0.391 | -2.631  0.068  0.592 |  0.451  0.002
-## 2   |  3.018 | -2.030  0.033  0.452 | -0.445  0.002  0.022 |  2.189  0.059
-## 3   |  3.261 | -2.418  0.047  0.550 |  0.065  0.000  0.000 |  2.187  0.059
-## 4   |  2.921 | -2.078  0.035  0.506 | -0.759  0.006  0.068 |  1.906  0.045
-## 5   |  2.971 | -2.150  0.037  0.524 | -0.586  0.003  0.039 |  1.965  0.047
-## 6   |  3.033 | -1.583  0.020  0.272 | -0.596  0.004  0.039 |  2.517  0.078
-## 7   |  2.953 | -1.440  0.017  0.238 | -0.943  0.009  0.102 |  2.399  0.071
-## 8   |  2.909 | -2.211  0.039  0.578 | -1.301  0.017  0.200 |  1.371  0.023
-## 9   |  2.937 | -1.194  0.011  0.165 | -1.684  0.028  0.329 |  2.088  0.054
-## 10  |  3.073 | -1.360  0.015  0.196 | -2.362  0.055  0.591 |  1.419  0.025
+## 1   |  1.825 | -0.276  0.000  0.023 | -0.748  0.001  0.168 |  1.641  0.006
+## 2   |  1.787 | -1.625  0.005  0.828 | -0.626  0.001  0.123 |  0.398  0.000
+## 3   |  3.068 |  0.975  0.002  0.101 | -2.724  0.015  0.788 |  1.020  0.002
+## 4   |  2.698 |  0.265  0.000  0.010 | -2.660  0.014  0.972 |  0.365  0.000
+## 5   |  2.437 |  0.107  0.000  0.002 | -0.348  0.000  0.020 |  2.409  0.013
+## 6   |  1.795 | -0.347  0.000  0.037 | -1.580  0.005  0.775 |  0.777  0.001
+## 7   |  2.408 | -1.383  0.003  0.330 | -1.890  0.007  0.616 | -0.562  0.001
+## 8   |  2.294 | -1.510  0.004  0.433 | -1.661  0.005  0.524 | -0.473  0.001
+## 9   |  2.108 |  0.158  0.000  0.006 | -1.812  0.006  0.739 |  1.065  0.003
+## 10  |  2.621 |  0.797  0.001  0.093 | -1.870  0.007  0.509 |  1.654  0.006
 ##       cos2  
-## 1    0.017 |
-## 2    0.526 |
-## 3    0.450 |
-## 4    0.426 |
-## 5    0.438 |
-## 6    0.689 |
-## 7    0.660 |
-## 8    0.222 |
-## 9    0.506 |
-## 10   0.213 |
+## 1    0.809 |
+## 2    0.050 |
+## 3    0.110 |
+## 4    0.018 |
+## 5    0.978 |
+## 6    0.188 |
+## 7    0.054 |
+## 8    0.042 |
+## 9    0.255 |
+## 10   0.398 |
 ## 
 ## Variables
 ##        Dim.1    ctr   cos2    Dim.2    ctr   cos2    Dim.3    ctr   cos2  
-## an  |  0.685 38.463  0.469 |  0.466 22.013  0.217 | -0.560 39.524  0.314 |
-## age | -0.401 13.179  0.161 |  0.876 77.810  0.768 |  0.267  9.010  0.072 |
-## dep |  0.768 48.357  0.590 |  0.042  0.177  0.002 |  0.639 51.466  0.409 |
+## an  |  0.620 34.747  0.384 |  0.563 31.064  0.317 | -0.547 34.189  0.299 |
+## age |  0.772 53.826  0.595 | -0.067  0.442  0.005 |  0.633 45.732  0.400 |
+## dep | -0.356 11.427  0.126 |  0.835 68.494  0.698 |  0.419 20.079  0.176 |
 \end{verbatim}
 
 \begin{figure}[H]
@@ -536,14 +564,14 @@ Voici une interprétation plus spécifique en considérant les variables ``an'' 
 
 }
 
-\caption{ACP}\label{fig:acp}
+\caption{ACP - année/âge/département / Lecture graphique : Cercle des correlations de nos variables quantitatives (à gauche) et nuage des individus (à droite) / Source : Léo GABET RStudio}\label{fig:acp}
 \end{figure}
 
 Les individus formant un cercle peuvent indiquer que les années, départements, et groupes d'âge sont liés d'une manière particulière. Cela pourrait signifier qu'il y a des années ou des départements où les accidents de vélo sont plus fréquents, ou que certaines tranches d'âge sont plus touchées. Comme nous l'avons vu, les départements de l'Ile de France, Nouvelle Aquitaine et Auvergne Rhone Alpes représentent une grande part de nos accidents dans notre base. De plus, nous avions vu un très grand nombre d'accident à partir de 2016 et une moyenne d'âge autour des 20/30 ans, ce qui est bien montré par notre ACP.
 
 Ces résultats suggèrent que les années et les départements expliquent une grande partie de la variance, tandis que l'âge joue un rôle distinct.
 
-Les valeurs élevées de \(cos^2\) indiquent une bonne représentation des années, départements et tranches d'âge dans l'espace des composantes principales. Par exemple, nous avons un \(cos^2\) de \(0.590\) pour la variable ``département'' sur le première axe et un \(cos^2\) de \(0.768\) pour la variable ``âge'' sur le deuxième axe.
+Les valeurs élevées de \(cos^2\) indiquent une bonne représentation des années, départements et tranches d'âge dans l'espace des composantes principales. Par exemple, nous avons un \(cos^2\) de \(0.595\) pour la variable ``âge'' sur le première axe et un \(cos^2\) de \(0.698\) pour la variable ``département'' sur le deuxième axe.
 
 Interprétation Globale :
 
@@ -552,14 +580,14 @@ Interprétation Globale :
 \item
   Les accidents de vélo sont influencés de manière significative par les années, les départements et les tranches d'âge.
 \item
-  La première composante principale peut représenter des variations temporelles et spatiales, la deuxième composante principale semble être liée à des différences liées à l'âge des personnes impliquées, et la troisième composante principale peut être une combinaison temporelle et spatiale.
+  La première composante principale semble être liée à des différences liées à l'âge des personnes impliquées, la deuxième composante principale des variations temporelles et spatiales, et la troisième composante principale peut être une combinaison temporelle et spatiale.
 \end{itemize}
 
 \hypertarget{analyse-multivariuxe9}{%
 \subsection{Analyse multivarié}\label{analyse-multivariuxe9}}
 
-\hypertarget{acm-sur-les-accidents-de-vuxe9lo-en-france}{%
-\subsubsection{ACM sur les accidents de vélo en France}\label{acm-sur-les-accidents-de-vuxe9lo-en-france}}
+\hypertarget{acm---france}{%
+\subsubsection{ACM - France}\label{acm---france}}
 
 \begin{figure}[H]
 
@@ -567,19 +595,28 @@ Interprétation Globale :
 
 }
 
-\caption{ACM1}\label{fig:acm1}
+\caption{ACM - France des individus en fonction des conséquences d'accidents / Lecture graphique : Premier axe symbolisant la gravité des accidents, du moins grave au plus grave de la gauche vers la droite / Source : Léo GABET RStudio}\label{fig:acm1}
 \end{figure}
 
-Du graphe de l'ACM ressort 4 zones, dont :
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.9\linewidth]{Rapport_ADD_LEO-GABET_files/figure-latex/acm10-1} 
+
+}
+
+\caption{ACM - France des individus en fonction des conséquences d'accidents et selon les modalités / Lecture graphique : Ajout des modalités pour les identifiers à nos conséquences en fonction de nos individus du dernier graphe de l'ACM / Source : Léo GABET RStudio}\label{fig:acm10}
+\end{figure}
+
+De ces graphes de notre ACM ressort 4 zones, dont :
 
 \begin{itemize}
 \tightlist
 \item
-  La zone indemne en vert en haut à gauche, associés aux modalités Tranche\_horaire\_nuit, Situation\_sur\_trottoir, nuit sans eclairage public, Choc subi aucun etc.
+  La zone ``indemne'' en vert en haut à gauche, associée aux modalités Tranche\_horaire\_nuit, Situation\_sur\_trottoir, nuit sans eclairage public, Choc subi aucun etc.
 \item
-  La zone Blessé léger en rouge qui représente la plus grosse partie de nos individu comme déjà vu ultérieurement, associé aux modalités Ile de France, Surface mouillé, Meteo pluie légère.
+  La zone ``Blessé léger'' en rouge qui représente la plus grosse partie de nos individu comme déjà vu ultérieurement, associée aux modalités Ile de France, Surface mouillé, Meteo pluie légère etc.
 \item
-  Les zones Blessé hospitalisé/Tué respectivement en noir/bleu qui se chevauche entre la partie rouge (blessé léger) et bleu (Tué) coté centré/droit de notre graphe, associés aux modalités Hors agglomération, Lieu Zone piétonne, Choc subi coté droit etc.
+  Les zones ``Blessé hospitalisé / Tué'' respectivement en noir/bleu qui se chevauche entre la partie rouge (blessé léger) et bleu (Tué) coté centré/droit de notre graphe, associées aux modalités Hors agglomération, Lieu Zone piétonne, Choc subi coté droit etc.
 \end{itemize}
 
 \begin{figure}[H]
@@ -588,13 +625,13 @@ Du graphe de l'ACM ressort 4 zones, dont :
 
 }
 
-\caption{Modalité}\label{fig:acm1moda}
+\caption{Variables de l'ACM - France / Lecture graphique : Mise en évidence de nos variables qui contribuent le plus à la contructions de nos axes de l'ACM / Source : Léo GABET RStudio}\label{fig:acm1moda}
 \end{figure}
 
-On distingue que sur le premier axe, 4 variables se distinguent qui sont les conséquences, régions, routes et agglomérations. De plus, un autre groupe de 3 variables se distinguent sur le deuxième axe à savoir les surfaces, profils de routes et plans de routes.
+On distingue que sur le premier axe, 3 variables se distinguent qui sont les conséquences, routes et agglomérations. De plus, un autre groupe de 3 variables se distinguent sur le deuxième axe à savoir les surfaces, profils de routes et plans de routes.
 Nous ne nous intéresserons qu'au premier axe, les modalités du deuxième axe sont très éloignés de notre groupe d'individu.
 
-En regardant l'ACM en laissant seulement nos 4 variables avec leurs modalités, nous avons le graphe ci-dessous :
+En regardant l'ACM en laissant seulement nos 3 variables avec leurs modalités et en laissant nos régions, nous avons le graphe ci-dessous :
 
 \begin{figure}[H]
 
@@ -602,12 +639,12 @@ En regardant l'ACM en laissant seulement nos 4 variables avec leurs modalités, 
 
 }
 
-\caption{Mises en évidences des modalités}\label{fig:acm1modagraphe}
+\caption{Modalités conséquences,régions,routes,agglomérations de l'ACM - France / Lecture graphique : Mise en évidence de nos modalités qui contribuent le plus à la contruction de notre premier axe de l'ACM / Source : Léo GABET RStudio}\label{fig:acm1modagraphe}
 \end{figure}
 
-Ceci nous permet d'affiner notre analyse du début. En effet, on constate bien une séparation de notre graphe en deux parties. Une partie gauche reflétant les cas des accidents avec Indemne et Blessé léger qui se situe en agglomeration donc par exemple en Ile de France ! Puis une partie droite symbolisant les accidents plus grave se situant en hors agglomération comme en Auvergne-Rhone-Alpes.
+Ceci nous permet d'affiner notre analyse du début. En effet, on constate bien une séparation de notre graphe en deux parties. Une partie gauche reflétant les cas des accidents avec ``Indemne'' et ``Blessé léger'' qui se situe en agglomeration donc par exemple en Ile de France ! Puis une partie droite symbolisant les accidents plus grave se situant en hors agglomération comme en Auvergne-Rhone-Alpes (par exemple, les routes montagneuses).
 
-Pour rappel, la variable contexte n'était pas si loin du groupe de nos 4 variables de notre premier axe, il serait donc intéressant d'analyser les variables régions, contexte et conséquence.
+Pour rappel, la variable contexte n'était pas si loin du groupe de nos 3 variables de notre premier axe, il serait donc intéressant d'analyser les variables région, contexte et conséquence.
 
 \begin{figure}[H]
 
@@ -615,32 +652,31 @@ Pour rappel, la variable contexte n'était pas si loin du groupe de nos 4 variab
 
 }
 
-\caption{AVEC CONTEXTE}\label{fig:acm1modaCONTEXTE}
+\caption{Modalités conséquences,régions,contextes de l'ACM - France / Lecture graphique : Mise en évidence de nos modalités dont le contexte qui contribuent le plus à la contruction de nos axes de l'ACM / Source : Léo GABET RStudio}\label{fig:acm1modaCONTEXTE}
 \end{figure}
 
-Le contexte domicile-travail est mise en avant pour le cas des blessé léger qui est fortement influencé par la région Ile de France. Tout court, cette région influence totalement toute la partie Gauche de notre graphe.
-Tant dis que le coté droit du graphe, on retrouve logiquement les cas plus grave en accient dont le contexte Courses-achats et Promenade-loisirs qui est mise en avant.
-Ceci nous permet d'analyser que les cas d'accident les plus graves se produisent lors des moments de détentes, donc renforcer les préventions en mettant en avant les chiffres d'accident de vélo dans le contexte de loisir pourrait sensibiliser davantage la population.
+Le contexte domicile-travail est mis en avant pour le cas des 'blessé léger'' qui est fortement influencé par la région Ile de France. Tout court, cette région influence totalement toute la partie Gauche de notre graphe.
+Tant dis que le coté droit du graphe, on retrouve logiquement les cas plus grave en accident dont le contexte Courses-achats et Promenade-loisirs qui est mise en avant.
+Ceci nous permet d'analyser que les cas d'accident les plus graves se produisent lors des moments de détentes, donc refaire des préventions en mettant en avant les chiffres d'accident de vélo dans le contexte de loisir pourrait sensibiliser davantage la population.
 
-\hypertarget{afc-sur-les-ruxe9gions-selon-les-consuxe9quences}{%
-\subsubsection{AFC sur les régions selon les conséquences}\label{afc-sur-les-ruxe9gions-selon-les-consuxe9quences}}
+\hypertarget{afc---ruxe9gionconsuxe9quence}{%
+\subsubsection{AFC - Région/Conséquence}\label{afc---ruxe9gionconsuxe9quence}}
 
 \begin{verbatim}
 ##                             V2
-## V1                           Blesse hospitalise Blesse leger Indemne  Tue
-##   Auvergne-Rhone-Alpes                      561          567      75   85
-##   Bourgogne-Franche-Comte                   192          153      22   26
-##   Bretagne                                  414          347      34   54
-##   Centre-Val de Loire                       256          301      39   21
-##   Corse                                      20           10       3    4
-##   Grand Est                                 391          271      48   39
-##   Hauts-de-France                           184           78       8   23
-##   Ile-de-France                             386         2156     367   22
-##   Normandie                                 106          135      16   21
-##   Nouvelle-Aquitaine                        529          684      63   62
-##   Occitanie                                 109           43       6   14
-##   Pays de la Loire                          413          659      61   52
-##   Provence-Alpes-Cote d'Azur                 90           57       1   14
+## V1                           Blesse hospitalise Blesse leger Indemne   Tue
+##   Auvergne-Rhone-Alpes                     2256         2689     346   266
+##   Bourgogne-Franche-Comte                   954          911      94   113
+##   Bretagne                                  952         1414     109   115
+##   Centre-Val de Loire                       765          987     111    90
+##   Grand Est                                1669         2532     294   171
+##   Hauts-de-France                          1427         1452     121   126
+##   Ile-de-France                            2278        10329    1507   142
+##   Normandie                                 799          680      81    96
+##   Nouvelle-Aquitaine                       1724         2735     266   179
+##   Occitanie                                1256         1504     174   172
+##   Pays de la Loire                         1133         1555     134   106
+##   Provence-Alpes-Cote d'Azur               1316         1576     199   129
 \end{verbatim}
 
 \begin{verbatim}
@@ -648,7 +684,7 @@ Ceci nous permet d'analyser que les cas d'accident les plus graves se produisent
 ##  Pearson's Chi-squared test
 ## 
 ## data:  contingence
-## X-squared = 1430.8, df = 36, p-value < 2.2e-16
+## X-squared = 3722.5, df = 33, p-value < 2.2e-16
 \end{verbatim}
 
 \begin{figure}[H]
@@ -657,14 +693,14 @@ Ceci nous permet d'analyser que les cas d'accident les plus graves se produisent
 
 }
 
-\caption{AFC1}\label{fig:afc1}
+\caption{AFC sur les régions et conséquences / Lecture graphique : Mise en évidence des régions à risques / Source : Léo GABET RStudio}\label{fig:afc1}
 \end{figure}
 
-Le test du chi carré indique une dépendance significative entre les variables, avec un p-value très faible (1.988227e-277). Cela suggère que les caractéristiques analysées ne sont pas indépendantes.
+Le test du khi-deux indique une dépendance significative entre les variables, avec un p-value très faible (proche de 0). Cela suggère que les caractéristiques analysées ne sont pas indépendantes.
 
-Les valeurs propres représentent la variance expliquée par chaque dimension. La première dimension explique 96.728\% de la variance, la deuxième 2.150\%, et la troisième 1.122\%. La première dimension est donc prédominante.
+Les valeurs propres représentent la variance expliquée par chaque dimension. La première dimension explique 97.793\% de la variance, la deuxième 1.42\%, et la troisième 0.787\%. La première dimension est donc prédominante.
 
-Les résultats pour les départements montrent leurs positions sur les dimensions extraites. Par exemple, l'Ile-de-France est fortement associée à la première dimension (Dim.1), mais négativement.
+Les résultats pour les régions montrent leurs positions sur les dimensions extraites. Par exemple, l'Ile-de-France est fortement associée à la première dimension (Dim.1), mais négativement.
 
 Les résultats pour les conséquences des accidents montrent leur association avec les dimensions extraites. Par exemple, ``Blesse hospitalise'' est positivement associé à la première dimension, tandis que ``Indemne'' est négativement associé.
 
@@ -674,7 +710,7 @@ Les résultats pour les conséquences des accidents montrent leur association av
 
 }
 
-\caption{AFC2}\label{fig:afc2}
+\caption{Contribution des régions sur la première dimension / Lecture graphique : Point de vue l'influence de chaque région sur la contribution de la dim 1 avec l'ile de France en tête / Source : Léo GABET RStudio}\label{fig:afc2}
 \end{figure}
 
 \begin{figure}[H]
@@ -683,26 +719,26 @@ Les résultats pour les conséquences des accidents montrent leur association av
 
 }
 
-\caption{AFC3}\label{fig:afc3}
+\caption{Cos2 des conséquences sur la première dimension / Lecture graphique : Analyse du cos2 de chaque modalité d'accident avec les cas *blessé hospitalisé* et *léger* en priorité / Source : Léo GABET RStudio}\label{fig:afc3}
 \end{figure}
 
-Les valeurs \(cos^2\) proches de 1 indiquent une bonne représentation. Par exemple, ``Blesse hospitalise'' à un \(cos^2\) élevé sur la première dimension.
+Les valeurs \(cos^2\) proches de 1 indiquent une bonne représentation. Par exemple, ``Blesse hospitalise'' à un \(cos^2\) élevé sur la première dimension, mais les autres aussi.
 
 Interprétation Générale :
 
 \begin{itemize}
 \item
-  La première dimension semble être associée à des caractéristiques qui différencient les départements, peut-être liées à la prévalence des accidents. L'Ile-de-France se distingue par une contribution de 60\%, ce qui pourrait indiquer des facteurs spécifiques à cette région (que nous verrons par la suite).
+  La première dimension semble être associée à des caractéristiques qui différencient les régions, peut-être liées à la prévalence des accidents. L'Ile-de-France se distingue par une contribution de plus de 60\%, ce qui pourrait indiquer des facteurs spécifiques à cette région (que nous verrons par la suite).
 \item
-  La conséquence ``Tué'' est associée à la première dimension, ce qui indique que sa fréquence est liée à des caractéristiques spécifiques des départements.
+  La conséquence ``Tué'' est associée à la première dimension, ce qui indique que sa fréquence est liée à des caractéristiques spécifiques des départements et régions (à savoir les régions montagneuses et de météo plus tôt douce).
 \item
   Le \(cos^2\) élevé pour ``Tué'' sur la troisième dimension suggère une spécificité dans les caractéristiques associées aux décès.
 \end{itemize}
 
-Donc, l'AFC met en évidence des associations significatives entre les départements, les conséquences des accidents, et les dimensions extraites. L'Ile-de-France se démarque et des patterns spécifiques méritent une exploration plus approfondie pour comprendre les facteurs qui contribuent aux accidents de vélo dans la région.
+Donc, l'AFC met en évidence des associations significatives entre les régions, les conséquences des accidents, et les dimensions extraites. L'Ile-de-France se démarque et des patterns spécifiques méritent une exploration plus approfondie pour comprendre les facteurs qui contribuent aux accidents de vélo dans la région.
 
-\hypertarget{acm-sur-la-muxe9tropole}{%
-\subsection{ACM sur la métropole}\label{acm-sur-la-muxe9tropole}}
+\hypertarget{acm---paris}{%
+\subsubsection{ACM - Paris}\label{acm---paris}}
 
 A partir de maintenant, nous allons étudié plus en détail la ville de Paris qui représente la majorité des cas d'accident de vélo en Ile de France.
 
@@ -712,10 +748,10 @@ A partir de maintenant, nous allons étudié plus en détail la ville de Paris q
 
 }
 
-\caption{ACM PARIS}\label{fig:acmPARIS1}
+\caption{Nuage des individus en fonction des conséquences / Lecture graphique : On retrouve nos 4 modalités en terme de conséquence dont *blessé léger* qui représente la plus grande partie / Source : Léo GABET RStudio}\label{fig:acmPARIS1}
 \end{figure}
 
-On retrouve une grande part d'accident léger parmis nos individus sur la partie gauche de notre graphe, consitué des quelques cas d'accidents plus graves.
+On retrouve une grande part d'accident ``léger'' parmis nos individus sur la partie gauche de notre graphe, constitué des quelques cas d'accidents plus graves.
 
 Regardons de plus prêt nos variables associés :
 
@@ -725,7 +761,7 @@ Regardons de plus prêt nos variables associés :
 
 }
 
-\caption{ACM PARIS avec var}\label{fig:acmPARIS}
+\caption{Meilleurs Modalités de l'ACM / Lecture graphique : Mise en évidence de nos modalités qui contribuent le plus à la contructions de nos axes de l'ACM / Source : Léo GABET RStudio}\label{fig:acmPARIS}
 \end{figure}
 
 Le mois de juin se démarque très particulièrement dans l'ensemble de la majorité des accidents, avec un très grand nombre de choc subi par le coté droit. De plus le contexte de loisir promenade est de nouveau présent, tout comme lors de notre analyse à l'échelle nationale.
@@ -763,14 +799,31 @@ Le mois de juin se démarque très particulièrement dans l'ensemble de la major
 ## X-squared = 95.305, df = 57, p-value = 0.001105
 \end{verbatim}
 
+L'analyse des accidents de vélo par arrondissement à Paris, réalisée à l'aide du test du khi-deux de Pearson, révèle une association significative entre la fréquence des accidents de vélo et les arrondissements de la ville avec une très faible p-value = 0.001105. La faible p-value indique un rejet de l'hypothèse nulle d'indépendance. En d'autres termes, il existe des variations statistiquement significatives dans la répartition des accidents de vélo selon les arrondissements parisiens. Ces résultats suggèrent la nécessité d'une exploration approfondie des facteurs spécifiques à chaque arrondissement qui pourraient influencer ces variations.
+
 \begin{figure}[H]
 
 {\centering \includegraphics[width=0.9\linewidth]{Rapport_ADD_LEO-GABET_files/figure-latex/Afc2PARIS-1} 
 
 }
 
-\caption{AFC PARIS}\label{fig:Afc2PARIS}
+\caption{Arrondissement en fonction des conséquences / Lecture graphique : Visualisation des arrondissements se regroupant par catégories d'accidents / Source : Léo GABET RStudio}\label{fig:Afc2PARIS}
 \end{figure}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.9\linewidth]{Rapport_ADD_LEO-GABET_files/figure-latex/afcARR-1} 
+
+}
+
+\caption{Contribution des arrondissements sur la première dimension / Lecture graphique : Mise en avant des arrondissements qui influencent le plus la construction de l'AFC / Source : Léo GABET RStudio}\label{fig:afcARR}
+\end{figure}
+
+Les trois premières dimensions de l'AFC expliquent respectivement 49.367\%, 25.826\%, et 24.807\% de la variance totale. En examinant les contributions des arrondissements aux dimensions, on observe que les arrondissements 15, 20, 4, 6, et 19 ont des contributions significatives, suggérant une association notable entre ces zones géographiques et les conséquences des accidents.
+
+En ce qui concerne les conséquences, les modalités ``Tué'' et ``Blessé hospitalisé'' contribuent de manière importante à la première dimension, tandis que ``Blessé léger'' et ``Indemne'' sont associés à la deuxième dimension. Ces résultats indiquent une segmentation spatiale des conséquences des accidents de vélo à travers les arrondissements.
+
+Il est important de noter que l'AFC fournit une visualisation et une compréhension des relations entre les variables catégorielles, offrant ainsi des insights utiles pour des interventions ciblées en matière de sécurité routière.
 
 \begin{verbatim}
 ##                              V2
@@ -798,57 +851,26 @@ Le mois de juin se démarque très particulièrement dans l'ensemble de la major
 
 }
 
-\caption{AFC PARIS}\label{fig:Afc3PARIS}
+\caption{AFC entre les contextes et conséquences / Lecture graphique : Tentative de catégoriser nos conséquences en fonction de nos contextes mises en oeuvre ici / Source : Léo GABET RStudio}\label{fig:Afc3PARIS}
 \end{figure}
 
-\hypertarget{afc-sur-les-pistes-cyclables-de-paris}{%
-\subsection{AFC sur les pistes cyclables de Paris}\label{afc-sur-les-pistes-cyclables-de-paris}}
+L'AFC entre le contexte et la conséquence des accidents de vélo révèle une statistique du khi-deux d'indépendance égale à 15.20789, avec une p-valeur de 0.6476463. Cette p-valeur indique l'absence de relation significative entre ces deux variables.
+
+Les trois premières dimensions de l'AFC expliquent respectivement 50.710\%, 35.208\%, et 14.082\% de la variance totale. En examinant les contributions des modalités de contexte et de conséquence aux dimensions, on constate que les arrondissements ne contribuent pas significativement à ces dimensions.
+
+Les modalités spécifiques de contexte (Courses - achats, Domicile -- ecole, Domicile -- travail, Non renseigne, Promenade - loisirs, Utilisation professionnelle, Valeur inconnue) ne montrent pas de liens significatifs avec les conséquences des accidents.
+
+Donc l'AFC suggère l'absence d'une association significative entre les contextes et les conséquences des accidents de vélo dans les arrondissements de Paris, selon les données analysées. Ces résultats mettent en lumière l'importance de considérer d'autres facteurs ou variables pour une compréhension plus approfondie des motifs d'accidents de vélo.
+
+\hypertarget{afc---pistes-cyclables-de-paris}{%
+\subsubsection{AFC - Pistes cyclables de Paris}\label{afc---pistes-cyclables-de-paris}}
 
 \begin{verbatim}
-##     V2
-## V1   Autres itineraires cyclables (ex : Aires pietonnes - Contre-sens cyclables)
-##   1                                                                          139
-##   10                                                                         108
-##   11                                                                         250
-##   12                                                                         216
-##   13                                                                         260
-##   14                                                                         217
-##   15                                                                         311
-##   16                                                                          92
-##   17                                                                         194
-##   18                                                                         369
-##   19                                                                         172
-##   2                                                                          144
-##   20                                                                         312
-##   3                                                                           94
-##   4                                                                          198
-##   5                                                                          232
-##   6                                                                          158
-##   7                                                                          159
-##   8                                                                           28
-##   9                                                                           98
-##     V2
-## V1   Bandes cyclables Couloirs de bus ouverts aux velos Pistes cyclables
-##   1                25                               107               17
-##   10              100                                73              235
-##   11               62                                26              193
-##   12              120                                96              627
-##   13              153                               170              589
-##   14              131                               145              343
-##   15              156                                99              333
-##   16              108                               107              314
-##   17              340                               116              200
-##   18               88                               124              270
-##   19              110                                78              353
-##   2                47                                46               10
-##   20              129                                41              341
-##   3                13                                62               16
-##   4                62                                75              225
-##   5               102                                64               69
-##   6                81                                99               23
-##   7                76                                60               58
-##   8               152                               128              267
-##   9                76                               135               37
+## 
+##  Pearson's Chi-squared test
+## 
+## data:  contingence
+## X-squared = 2282.6, df = 57, p-value < 2.2e-16
 \end{verbatim}
 
 \begin{figure}[H]
@@ -857,10 +879,18 @@ Le mois de juin se démarque très particulièrement dans l'ensemble de la major
 
 }
 
-\caption{AFC PARIS pistes}\label{fig:Afc5PARISvelo}
+\caption{AFC sur l'aménagement des pistes / Lecture graphique : Etude des liens entre les différentes typologies en fonction des arrondissements / Source : Léo GABET RStudio}\label{fig:Afc5PARISvelo}
 \end{figure}
 
+L'AFC entre les arrondissements et les différentes typologies d'aménagement de piste cyclable révèle une statistique du khi-deux d'indépendance égale à 2282.614, avec une p-valeur proche e 0. Cette p-valeur indique une relation significative entre ces deux variables.
+
+Les trois premières dimensions de l'AFC expliquent respectivement 56.891\%, 27.386\%, et 15.723\% de la variance totale. En examinant les contributions des arrondissements aux dimensions, on observe que plusieurs arrondissements ont des contributions significatives, suggérant une association notable entre les zones géographiques et les différentes typologies d'aménagement de piste cyclable.
+
+En ce qui concerne les différentes typologies d'aménagement de piste cyclable, les bandes cyclables, les couloirs de bus ouverts aux vélos, et les pistes cyclables montrent des contributions importantes aux dimensions de l'AFC. Ces résultats indiquent une segmentation spatiale des aménagements cyclables à travers les arrondissements.
 
 
+
+\pagebreak
+\listoffigures
 
 \end{document}
