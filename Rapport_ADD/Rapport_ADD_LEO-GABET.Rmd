@@ -13,7 +13,7 @@ author:
 email:
   - leo.gabet@etudiant.univ-reims.fr
 date: "`r format(Sys.time(), '%d %B %Y')`"
-abstract: "Dans le cadre de ce projet d'analyse de données, une étude sur les accidents de vélo en France sera prévue. L'analyse se concentre sur la compréhension des schémas sous-jacents à ces incidents, avec l'objectif d'identifier des tendances significatives pour informer les initiatives de sécurité routière et améliorer la sécurité des cyclistes."
+abstract: "Dans le cadre de ce projet d'analyse de données, une étude sur les accidents de vélo en France sera effectué. L'analyse se concentre sur la compréhension des schémas sous-jacents à ces incidents, avec l'objectif d'identifier des tendances significatives pour informer les initiatives de sécurité routière et améliorer la sécurité des cyclistes."
 keywords:
   - ACP/AFC/ACM 
 anac: "2023-2024"
