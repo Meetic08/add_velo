@@ -510,7 +510,7 @@ Les bases utilisés après nettoyage sont :
 - "data_paris" qui est une sous base de "data_france" avec rajout des arrondissements de Paris
 - "data_cycle-piste" qui est une base qui récapitule les aménagements des pistes cyclabes à Paris
 
-![Nature des variables exploités de nos bases / Source : Léo GABET Excel](../VAR.png)
+![Nature des variables exploités de nos bases / Source : Léo GABET Excel](images/VAR.png)
 
 ## Complément 
 
@@ -562,7 +562,7 @@ On constate une diminution des cas "blessé léger / Indemne" et une augmentatio
 
 \newpage 
 
-![Plan aménagement pistes cyclables Paris / Source : https://www.pistes-cyclables.com/2019/06/plan-des-pistes-cyclables-de-paris-2020/](../VELO.png)
+![Plan aménagement pistes cyclables Paris / Source : https://www.pistes-cyclables.com/2019/06/plan-des-pistes-cyclables-de-paris-2020/](images/VELO.png)
 
 Ce plan vise à faire de Paris la capitale mondiale du vélo, projet fondamental mené par Anne Hildago[^4].
 
